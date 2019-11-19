@@ -7,19 +7,20 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 		model=User
 		fields=('url','pk', 'username', 'email', 'password')
 
-class AbiliitySerializer(serializers.HyperlinkedModelSerializer):
-	class Meta:
-		model = Abiliity
-		fields = ('url', 'pk', 'name','force', 'allowed_level')
 class KnowingSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Knowing
-		fields = ('url', 'pk', 'name', 'defense', 'allowed_level')
+		fields = ('url', 'pk', 'name', 'force', 'defense', 'allowed_level')
 
 class AvatarSerializer(serializers.HyperlinkedModelSerializer):
 	owner = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field='username')
-	knowledge = KnowingSerializer(many=True, read_only=True)
-	abiliities = AbiliitySerializer(many=True, read_only=True)
+	knowing = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
 	class Meta:
 		model = Avatar
-		fields = ('url','pk', 'owner', 'name', 'force', 'defense', 'life', 'level', 'abiliities', 'knowledge')
+		fields = ('url','pk', 'owner', 'name', 'force', 'defense', 'life', 'level', 'knowing')
+
+class AvatarKnowingSerializer(serializers.HyperlinkedModelSerializer):
+	knowing = serializers.SlugRelatedField(queryset=Knowing.objects.all(), many=True, slug_field='name')
+	class Meta:
+		model = Avatar
+		fields = ('url', 'pk','knowing')

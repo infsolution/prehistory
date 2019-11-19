@@ -25,7 +25,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 class AvatarList(generics.ListCreateAPIView):
     queryset = Avatar.objects.all()
     serializer_class = AvatarSerializer
-    permission_classes = (permissions.IsAuthenticated),
+    #permission_classes = (permissions.IsAuthenticated),
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
     name = 'avatar-list'
@@ -36,24 +36,11 @@ class AvatarDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated),
     name = 'avatar-detail'
 
-class AbiliityList(generics.ListCreateAPIView):
-    queryset = Abiliity.objects.all()
-    serializer_class = AbiliitySerializer
-    permission_classes = (permissions.IsAuthenticated),
-    filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = '__all__'
-    name = 'abiliity-list'
-
-class AbiliityDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Abiliity.objects.all()
-    serializer_class = AbiliitySerializer
-    permission_classes = (permissions.IsAuthenticated),
-    name = 'abiliity-detail'
 
 class KnowingList(generics.ListCreateAPIView):
     queryset = Knowing.objects.all()
     serializer_class = KnowingSerializer
-    permission_classes = (permissions.IsAuthenticated),
+    #permission_classes = (permissions.IsAuthenticated),
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
     name = 'knowing-list'
@@ -63,3 +50,17 @@ class KnowingDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = KnowingSerializer
     permission_classes = (permissions.IsAuthenticated),
     name = 'knowing-detail'
+
+class AvatarKnowingList(generics.ListCreateAPIView):
+    queryset = Avatar.objects.all()
+    serializer_class = AvatarKnowingSerializer
+    permission_classes = (permissions.IsAuthenticated),
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
+    name = 'avatarknowing-list'
+
+class AvatarKnowingDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Avatar.objects.all()
+    serializer_class = AvatarKnowingSerializer
+    permission_classes = (permissions.IsAuthenticated),
+    name = 'avatarknowing-detail'
