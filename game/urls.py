@@ -9,4 +9,6 @@ urlpatterns = [
 	path('knowing/<int:pk>/', views.KnowingDetail.as_view(), name = views.KnowingDetail.name),
 	path('avatarknowing/', views.AvatarKnowingList.as_view(), name =  views.AvatarKnowingList.name),
 	path('avatarknowing/<int:pk>/',views.AvatarKnowingDetail.as_view(), name = views.AvatarKnowingDetail.name),
+	path('avataritem/', views.AvatarItemList.as_view(), name =  views.AvatarItemList.name),
+	path('avataritem/<int:pk>/',views.AvatarItemDetail.as_view(), name = views.AvatarItemDetail.name),
 ]

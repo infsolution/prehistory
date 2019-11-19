@@ -64,3 +64,17 @@ class AvatarKnowingDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AvatarKnowingSerializer
     permission_classes = (permissions.IsAuthenticated),
     name = 'avatarknowing-detail'
+
+class AvatarItemList(generics.ListCreateAPIView):
+    queryset = Avatar.objects.all()
+    serializer_class = AvatarItemSerializer
+    permission_classes = (permissions.IsAuthenticated),
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
+    name = 'avataritem-list'
+
+class AvatarItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Avatar.objects.all()
+    serializer_class = AvatarItemSerializer
+    permission_classes = (permissions.IsAuthenticated),
+    name = 'avataritem-detail'
