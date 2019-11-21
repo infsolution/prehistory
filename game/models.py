@@ -13,7 +13,7 @@ class Knowing(models.Model):
 class Item(models.Model):
 	name = models.CharField(max_length=40)
 	force = models. IntegerField(default=0)
-	defence = models. IntegerField(default=0)
+	defense = models. IntegerField(default=0)
 	allowed_level = models. IntegerField(default=0)
 	def __str__(self):
 		return self.name

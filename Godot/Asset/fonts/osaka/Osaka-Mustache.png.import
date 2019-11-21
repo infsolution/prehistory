@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Osaka-Mustache.png-ae3dfdb7c855ee01e8c54439f324a771.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Asset/fonts/osaka/Osaka-Mustache.png"
+dest_files=[ "res://.import/Osaka-Mustache.png-ae3dfdb7c855ee01e8c54439f324a771.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

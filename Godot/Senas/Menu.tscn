@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=1]
+[ext_resource path="res://Asset/imgtemp/cartoon-1-landscape-3D-model_Z.jpg" type="Texture" id=2]
+[ext_resource path="res://Asset/fonts/red-delicious/reddeliciouscond.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=5]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+font_data = ExtResource( 3 )
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.669574, 0.664329 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Button" type="Button" parent="."]
+margin_left = 694.614
+margin_top = 475.518
+margin_right = 977.614
+margin_bottom = 545.518
+text = "Entrar"
+
+[node name="ButtonSair" type="Button" parent="."]
+margin_left = 309.657
+margin_top = 478.331
+margin_right = 629.657
+margin_bottom = 548.331
+text = "SAIR"
+
+[node name="TextUsuario" type="TextEdit" parent="."]
+margin_left = 443.0
+margin_top = 155.035
+margin_right = 858.0
+margin_bottom = 233.035
+custom_fonts/font = SubResource( 5 )
+
+[node name="LabelUsuario" type="Label" parent="."]
+margin_left = 567.776
+margin_top = 98.0
+margin_right = 746.776
+margin_bottom = 151.0
+custom_fonts/font = SubResource( 2 )
+text = "Usuário"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 575.807
+margin_top = 247.0
+margin_right = 700.807
+margin_bottom = 300.0
+custom_fonts/font = SubResource( 3 )
+text = "Senha"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="HTTPGetAvatar" type="HTTPRequest" parent="."]
+
+[node name="LineEditSenha" type="LineEdit" parent="."]
+margin_left = 440.0
+margin_top = 331.0
+margin_right = 859.0
+margin_bottom = 405.0
+custom_fonts/font = SubResource( 4 )
+secret = true
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ButtonSair" to="." method="_on_ButtonSair_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="request_completed" from="HTTPGetAvatar" to="." method="_on_HTTPGetAvatar_request_completed"]

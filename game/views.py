@@ -1,6 +1,9 @@
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework import status, generics, serializers
-from rest_framework import permissions
 from django_filters import rest_framework as filters
+from rest_framework.authtoken.models import Token
+from rest_framework.response import Response
+from rest_framework import permissions
 from django.shortcuts import render
 from game.serializers import *
 
@@ -25,7 +28,7 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 class AvatarList(generics.ListCreateAPIView):
     queryset = Avatar.objects.all()
     serializer_class = AvatarSerializer
-    #permission_classes = (permissions.IsAuthenticated),
+    permission_classes = (permissions.IsAuthenticated),
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = '__all__'
     name = 'avatar-list'
@@ -51,6 +54,20 @@ class KnowingDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated),
     name = 'knowing-detail'
 
+class ItemList(generics.ListCreateAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    #permission_classes = (permissions.IsAuthenticated),
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
+    name = 'item-list'
+
+class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    permission_classes = (permissions.IsAuthenticated),
+    name = 'item-detail'
+
 class AvatarKnowingList(generics.ListCreateAPIView):
     queryset = Avatar.objects.all()
     serializer_class = AvatarKnowingSerializer
@@ -65,6 +82,7 @@ class AvatarKnowingDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated),
     name = 'avatarknowing-detail'
 
+
 class AvatarItemList(generics.ListCreateAPIView):
     queryset = Avatar.objects.all()
     serializer_class = AvatarItemSerializer
@@ -78,3 +96,10 @@ class AvatarItemDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AvatarItemSerializer
     permission_classes = (permissions.IsAuthenticated),
     name = 'avataritem-detail'
+
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'id': token.user_id, 'username': token.user.username})
+    name = 'logado'  
