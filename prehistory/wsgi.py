@@ -15,7 +15,7 @@ import sys
 
 from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'prehistory.settings')
-sys.path.append('/var/www/html/prehistory/prehistory')
+sys.path.append('/var/www/html/prehistory')
 sys.path.append('/var/www/html/venv/lib/python3.5/site-packages')
 
 
