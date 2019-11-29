@@ -4,7 +4,7 @@
 [ext_resource path="res://Asset/imgtemp/cartoon-1-landscape-3D-model_Z.jpg" type="Texture" id=2]
 [ext_resource path="res://Asset/fonts/red-delicious/reddeliciouscond.otf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 3 )
 
@@ -47,7 +47,7 @@ margin_left = 443.0
 margin_top = 155.035
 margin_right = 858.0
 margin_bottom = 233.035
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 
 [node name="LabelUsuario" type="Label" parent="."]
 margin_left = 567.776
